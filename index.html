@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MomoBusiness - Excellence Technologique</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #1a252f;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --gradient: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(-100px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .animated {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        /* Header Premium */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        .logo-icon {
+            font-size: 32px;
+            margin-right: 12px;
+            color: var(--secondary);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-subtitle {
+            display: block;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 3px;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 0;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            display: flex;
+            margin-right: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 30px;
+            padding: 5px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .search-bar input {
+            background: transparent;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            width: 200px;
+            outline: none;
+        }
+        
+        .search-bar input::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .search-bar button {
+            background: var(--secondary);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .search-bar button:hover {
+            background: #c0392b;
+            transform: rotate(15deg);
+        }
+        
+        .header-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .btn-header {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            font-weight: 500;
+        }
+        
+        .btn-header:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 22px;
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .cart-icon:hover {
+            color: var(--secondary);
+            transform: scale(1.1);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        
+        /* Hero Section Premium */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        .btn-hero {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 1s ease-out 0.6s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-hero:hover::before {
+            left: 100%;
+        }
+        
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+            background: var(--light);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-icon {
+            font-size: 50px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        /* Produits Premium */
+        .products-section {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--accent);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .product-rating {
+            color: var(--warning);
+            margin-bottom: 15px;
+        }
+        
+        .add-to-cart {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .add-to-cart:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        /* Page produit détaillée */
+        .product-detail-page {
+            display: none;
+            padding: 40px 0;
+        }
+        
+        .product-detail-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        
+        .product-detail-images {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-main-image {
+            height: 400px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .product-thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: var(--transition);
+        }
+        
+        .product-thumbnail:hover, .product-thumbnail.active {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .product-detail-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .product-detail-title {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .product-detail-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-rating {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .product-detail-description {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .product-detail-features {
+            margin-bottom: 25px;
+        }
+        
+        .product-detail-features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .product-detail-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .product-detail-features i {
+            color: var(--success);
+            margin-right: 10px;
+        }
+        
+        .product-specs {
+            margin-bottom: 25px;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .specs-table td:first-child {
+            font-weight: 600;
+            width: 40%;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-back {
+            background: #95a5a6;
+            margin-right: 15px;
+        }
+        
+        .btn-back:hover {
+            background: #7f8c8d;
+        }
+        
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #7f8c8d;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+        
+        .btn-google {
+            background: #db4437;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin-top: 15px;
+        }
+        
+        .btn-google:hover {
+            background: #c23321;
+        }
+        
+        /* Contact Premium */
+        .contact-info {
+            background: var(--gradient);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 50px 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            opacity: 0.1;
+        }
+        
+        .contact-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-number {
+            font-size: 32px;
+            font-weight: 700;
+            margin: 20px 0;
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            animation: pulse 2s infinite;
+        }
+        
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .btn-contact:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer Premium */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #ccc;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 20px 0;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .header-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-bar {
+                margin-right: 0;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .contact-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .product-detail-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .contact-number {
+                font-size: 24px;
+                padding: 10px 20px;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Premium -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div>
+                        <div class="logo-text">MomoBusiness</div>
+                        <span class="logo-subtitle">Excellence Technologique</span>
+                    </div>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" id="homeLink">Accueil</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-actions">
+                    <div class="search-bar">
+                        <input type="text" id="searchInput" placeholder="Rechercher un produit...">
+                        <button id="searchButton"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="header-buttons">
+                        <button class="btn-header" id="loginBtn"><i class="fas fa-user"></i> Connexion</button>
+                        <div id="userInfo" class="user-info" style="display: none;">
+                            <div class="user-avatar" id="userAvatar">MB</div>
+                            <span id="userName">Utilisateur</span>
+                        </div>
+                        <div class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page d'accueil -->
+    <div id="homePage">
+        <!-- Hero Section Premium -->
+        <section class="hero" id="accueil">
+            <div class="hero-content">
+                <h1>L'Excellence Technologique à Votre Portée</h1>
+                <p>Découvrez une sélection premium de produits high-tech, alliant performance, design et innovation. MomoBusiness vous accompagne dans l'ère digitale avec des solutions adaptées.</p>
+                <a href="#produits" class="btn-hero">Découvrir nos produits <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="section-title">Pourquoi Choisir MomoBusiness ?</h2>
+                <div class="features-grid">
+                    <div class="feature-card animated">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Garantie Étendue</h3>
+                        <p>Tous nos produits bénéficient d'une garantie minimale de 12 mois avec support technique dédié.</p>
+                    </div>
+                    <div class="feature-card animated" style="animation-delay: 0.2s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Livraison Express</h3>
+                        <p>Recevez votre commande sous 24h à Niamey et 72h dans les autres régions du Niger.</p>
+                    </div>
+                    <div class="feature-card animated" style="animation-delay: 0.4s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Paiement Sécurisé</h3>
+                        <p>Multiple options de paiement : cash, mobile money, virement bancaire avec sécurité maximale.</p>
+                    </div>
+                    <div class="feature-card animated" style="animation-delay: 0.6s;">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Support 7j/7</h3>
+                        <p>Notre équipe est disponible pour vous accompagner avant, pendant et après votre achat.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produits Premium -->
+        <section class="products-section" id="produits">
+            <div class="container">
+                <h2 class="section-title">Nos Produits Phares</h2>
+                <div class="products-grid" id="productsGrid">
+                    <!-- Les produits seront générés par JavaScript -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Page produit détaillée -->
+    <div class="product-detail-page" id="productDetailPage">
+        <div class="container">
+            <div class="product-detail-content" id="productDetailContent">
+                <!-- Le contenu sera généré par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Connexion</h2>
+                <button class="close-modal" id="closeLoginModal">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="btn btn-hero" style="width: 100%;">Se connecter</button>
+                <button type="button" class="btn btn-google">
+                    <i class="fab fa-google"></i> Se connecter avec Google
+                </button>
+                <p style="text-align: center; margin-top: 15px;">Pas de compte ? <a href="#" id="showRegister">S'inscrire</a></p>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Inscription</h2>
+                <button class="close-modal" id="closeRegisterModal">&times;</button>
+            </div>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="registerFirstName">Prénom</label>
+                    <input type="text" id="registerFirstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerLastName">Nom</label>
+                    <input type="text" id="registerLastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPhone">Téléphone</label>
+                    <input type="tel" id="registerPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Mot de passe</label>
+                    <input type="password" id="registerPassword" required>
+                </div>
+                <button type="submit" class="btn btn-hero" style="width: 100%;">S'inscrire</button>
+                <button type="button" class="btn btn-google">
+                    <i class="fab fa-google"></i> S'inscrire avec Google
+                </button>
+                <p style="text-align: center; margin-top: 15px;">Déjà un compte ? <a href="#" id="showLogin">Se connecter</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Premium -->
+    <section class="contact-info" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Prêt à Passer à l'Action ?</h2>
+                <p>Notre équipe d'experts est à votre écoute pour vous conseiller et vous accompagner dans votre achat.</p>
+                
+                <div class="contact-number">
+                    <i class="fas fa-phone"></i> +227 98 06 46 67
+                </div>
+                
+                <p>Contactez-nous par téléphone, WhatsApp ou visitez notre showroom à Niamey.</p>
+                
+                <div class="contact-actions">
+                    <a href="tel:+22798064667" class="btn-contact">
+                        <i class="fas fa-phone"></i> Appeler maintenant
+                    </a>
+                    <a href="https://wa.me/22798064667" class="btn-contact" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="mailto:contact@momobusiness.com" class="btn-contact">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Premium -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MomoBusiness</h3>
+                    <p>Votre partenaire de confiance pour l'excellence technologique au Niger depuis 2020.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#accueil"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="#produits"><i class="fas fa-chevron-right"></i> Produits</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Catégories</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Smartphones</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Ordinateurs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Accessoires</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Gaming</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="tel:+22798064667"><i class="fas fa-phone"></i> +227 98 06 46 67</a></li>
+                        <li><a href="mailto:contact@momobusiness.com"><i class="fas fa-envelope"></i> contact@momobusiness.com</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Niamey, Niger</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> Lun-Sam: 8h-18h</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 MomoBusiness. Tous droits réservés. | Conçu avec <i class="fas fa-heart" style="color: var(--secondary);"></i> pour l'excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Données des produits
+        const products = [
+            {
+                id: 1,
+                name: "iPhone 14 Pro Max",
+                price: 850000,
+                image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                category: "Smartphone",
+                description: "Le dernier iPhone avec écran Dynamic Island, caméra professionnelle 48MP et puce A16 Bionic. Conçu pour les professionnels exigeants et les passionnés de technologie.",
+                features: [
+                    "Écran Super Retina XDR 6,7 pouces avec ProMotion",
+                    "Chip A16 Bionic avec Neural Engine de nouvelle génération",
+                    "Caméra principale 48 MP avec mode Action",
+                    "Batterie toute la journée avec autonomie améliorée",
+                    "Résistant à l'eau IP68 (jusqu'à 6 mètres pendant 30 minutes)",
+                    "Dynamic Island pour une interaction innovante"
+                ],
+                specifications: {
+                    "Écran": "6.7 pouces Super Retina XDR",
+                    "Processeur": "A16 Bionic",
+                    "Mémoire": "6 Go de RAM",
+                    "Stockage": "128 Go, 256 Go, 512 Go, 1 To",
+                    "Caméra": "Triple caméra 48MP + 12MP + 12MP",
+                    "Batterie": "Jusqu'à 29 heures de lecture vidéo",
+                    "Système": "iOS 16"
+                },
+                inStock: true,
+                rating: 4.7,
+                reviews: 124
+            },
+            {
+                id: 2,
+                name: "MacBook Pro 14\"",
+                price: 2200000,
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                category: "Ordinateur",
+                description: "Ordinateur portable professionnel avec puce M2 Pro, écran Liquid Retina XDR et autonomie exceptionnelle. Idéal pour les créateurs, développeurs et professionnels.",
+                features: [
+                    "Chip Apple M2 Pro avec CPU 12 cœurs et GPU 19 cœurs",
+                    "Écran Liquid Retina XDR 14,2 pouces avec ProMotion",
+                    "16 Go de mémoire unifiée pour des performances optimales",
+                    "SSD 512 Go ultra-rapide",
+                    "Autonomie jusqu'à 17 heures de navigation web",
+                    "Connectivité : Wi-Fi 6E, Thunderbolt 4, HDMI"
+                ],
+                specifications: {
+                    "Écran": "14.2 pouces Liquid Retina XDR",
+                    "Processeur": "Apple M2 Pro (12 cœurs)",
+                    "Mémoire": "16 Go unifiée",
+                    "Stockage": "512 Go SSD",
+                    "Graphiques": "GPU 19 cœurs",
+                    "Batterie": "Jusqu'à 17 heures",
+                    "Système": "macOS Ventura"
+                },
+                inStock: true,
+                rating: 4.9,
+                reviews: 89
+            },
+            {
+                id: 3,
+                name: "AirPods Pro",
+                price: 250000,
+                image: "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                category: "Accessoire",
+                description: "Écouteurs sans fil avec réduction active du bruit, mode Transparence et autonomie prolongée. Une expérience audio immersive où que vous soyez.",
+                features: [
+                    "Réduction active du bruit pour une immersion totale",
+                    "Mode Transparence pour rester connecté à votre environnement",
+                    "Autonomie jusqu'à 6 heures (24h avec le boîtier)",
+                    "Boîtier de charge MagSafe, sans fil ou Lightning",
+                    "Résistant à la sueur et à l'eau (IPX4)",
+                    "Audio spatial personnalisé avec suivi dynamique de la tête"
+                ],
+                specifications: {
+                    "Autonomie": "6 heures (écoute), 4.5 heures (communication)",
+                    "Chargement": "MagSafe, sans fil, Lightning",
+                    "Connectivité": "Bluetooth 5.3",
+                    "Résistance": "IPX4 (sueur et éclaboussures)",
+                    "Micro": "Micro directionnel avec réduction du bruit",
+                    "Compatibilité": "iPhone, iPad, Mac, Apple Watch"
+                },
+                inStock: true,
+                rating: 4.5,
+                reviews: 203
+            },
+            {
+                id: 4,
+                name: "Samsung Galaxy S23 Ultra",
+                price: 750000,
+                image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
+                    "https://images.unsplash.com/photo-1556656793-08538906a9f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                ],
+                category: "Smartphone",
+                description: "Smartphone Android haut de gamme avec stylet S-Pen intégré et caméra 200MP. La puissance créative dans votre poche.",
+                features: [
+                    "Écran Dynamic AMOLED 6,8 pouces avec taux de rafraîchissement adaptatif",
+                    "Processeur Snapdragon 8 Gen 2 for Galaxy",
+                    "Caméra 200 MP avec stabilisation optique avancée",
+                    "S-Pen intégré pour une productivité maximale",
+                    "Batterie 5000 mAh avec charge rapide 45W",
+                    "Conception durable avec verre Gorilla Glass Victus 2"
+                ],
+                specifications: {
+                    "Écran": "6.8 pouces Dynamic AMOLED 2X",
+                    "Processeur": "Snapdragon 8 Gen 2 for Galaxy",
+                    "Mémoire": "12 Go de RAM",
+                    "Stockage": "256 Go, 512 Go, 1 To",
+                    "Caméra": "Quadruple 200MP + 10MP + 10MP + 12MP",
+                    "Batterie": "5000 mAh",
+                    "Système": "Android 13 avec One UI 5.1"
+                },
+                inStock: true,
+                rating: 4.6,
+                reviews: 167
+            }
+        ];
+
+        // Variables globales
+        let cart = [];
+        let currentUser = null;
+        const homePage = document.getElementById('homePage');
+        const productDetailPage = document.getElementById('productDetailPage');
+        const productDetailContent = document.getElementById('productDetailContent');
+        const productsGrid = document.getElementById('productsGrid');
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+        const homeLink = document.getElementById('homeLink');
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const loginBtn = document.getElementById('loginBtn');
+        const userInfo = document.getElementById('userInfo');
+        const userName = document.getElementById('userName');
+        const userAvatar = document.getElementById('userAvatar');
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const closeLoginModal = document.getElementById('closeLoginModal');
+        const closeRegisterModal = document.getElementById('closeRegisterModal');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+
+        // Afficher les produits sur la page d'accueil
+        function displayProducts(productsToShow = products) {
+            productsGrid.innerHTML = '';
+            
+            if (productsToShow.length === 0) {
+                productsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+                        <i class="fas fa-search" style="font-size: 60px; color: #ccc; margin-bottom: 20px;"></i>
+                        <h3 style="color: #7f8c8d;">Aucun produit trouvé</h3>
+                        <p>Essayez d'autres termes de recherche</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            productsToShow.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card animated';
+                productCard.setAttribute('data-id', product.id);
+                productCard.innerHTML = `
+                    ${product.inStock ? '' : '<div class="product-badge" style="background: #7f8c8d;">Rupture</div>'}
+                    ${product.id === 1 ? '<div class="product-badge">Nouveau</div>' : ''}
+                    ${product.id === 4 ? '<div class="product-badge" style="background: var(--accent);">Promo</div>' : ''}
+                    <div class="product-image" style="background-image: url('${product.image}')"></div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <div class="product-rating">
+                            ${generateStarRating(product.rating)}
+                            <span>(${product.rating})</span>
+                        </div>
+                        <div class="product-price">${product.price.toLocaleString()} FCFA</div>
+                        <button class="add-to-cart" data-id="${product.id}" ${!product.inStock ? 'disabled' : ''}>
+                            <i class="fas fa-cart-plus"></i> ${product.inStock ? 'Ajouter au panier' : 'Rupture de stock'}
+                        </button>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+            });
+
+            // Ajouter les événements aux cartes de produits
+            document.querySelectorAll('.product-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (!e.target.classList.contains('add-to-cart')) {
+                        const productId = parseInt(card.getAttribute('data-id'));
+                        showProductDetail(productId);
+                    }
+                });
+            });
+
+            // Ajouter les événements aux boutons "Ajouter au panier"
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', addToCart);
+            });
+        }
+
+        // Générer le rating en étoiles
+        function generateStarRating(rating) {
+            let stars = '';
+            const fullStars = Math.floor(rating);
+            const hasHalfStar = rating % 1 >= 0.5;
+            
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            
+            if (hasHalfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            
+            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            
+            return stars;
+        }
+
+        // Afficher la page détaillée d'un produit
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            homePage.style.display = 'none';
+            productDetailPage.style.display = 'block';
+
+            // Générer les spécifications sous forme de tableau
+            const specsHtml = Object.entries(product.specifications)
+                .map(([key, value]) => `<tr><td>${key}</td><td>${value}</td></tr>`)
+                .join('');
+
+            productDetailContent.innerHTML = `
+                <div class="product-detail-images">
+                    <div class="product-main-image" style="background-image: url('${product.images[0]}')" id="mainImage"></div>
+                    <div class="product-thumbnails">
+                        ${product.images.map((img, index) => `
+                            <div class="product-thumbnail ${index === 0 ? 'active' : ''}" 
+                                 style="background-image: url('${img}')" 
+                                 data-image="${img}">
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                <div class="product-detail-info">
+                    <h1 class="product-detail-title">${product.name}</h1>
+                    <div class="product-detail-price">${product.price.toLocaleString()} FCFA</div>
+                    <div class="product-detail-rating">
+                        ${generateStarRating(product.rating)}
+                        <span>${product.rating} sur 5 (${product.reviews} avis)</span>
+                    </div>
+                    <p class="product-detail-description">${product.description}</p>
+                    
+                    <div class="product-detail-features">
+                        <h3>Caractéristiques principales:</h3>
+                        <ul>
+                            ${product.features.map(feature => `<li><i class="fas fa-check"></i> ${feature}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="product-specs">
+                        <h3>Spécifications techniques:</h3>
+                        <table class="specs-table">
+                            ${specsHtml}
+                        </table>
+                    </div>
+                    
+                    <div class="product-actions">
+                        <button class="btn btn-back" id="backToProducts">Retour aux produits</button>
+                        <button class="btn btn-hero add-to-cart-detail" data-id="${product.id}" ${!product.inStock ? 'disabled' : ''}>
+                            ${product.inStock ? '<i class="fas fa-cart-plus"></i> Ajouter au panier' : 'Rupture de stock'}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            // Ajouter les événements
+            document.getElementById('backToProducts').addEventListener('click', showHomePage);
+            document.querySelector('.add-to-cart-detail').addEventListener('click', addToCart);
+            
+            // Gérer les miniatures d'images
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('mainImage').style.backgroundImage = `url('${this.getAttribute('data-image')}')`;
+                });
+            });
+        }
+
+        // Afficher la page d'accueil
+        function showHomePage() {
+            homePage.style.display = 'block';
+            productDetailPage.style.display = 'none';
+        }
+
+        // Recherche de produits
+        function searchProducts() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            if (searchTerm === '') {
+                displayProducts();
+                return;
+            }
+            
+            const filteredProducts = products.filter(product => 
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.category.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+            
+            displayProducts(filteredProducts);
+        }
+
+        // Ajouter au panier
+        function addToCart(e) {
+            e.stopPropagation();
+            const productId = parseInt(e.target.getAttribute('data-id'));
+            const product = products.find(p => p.id === productId);
+            
+            if (!product.inStock) {
+                showNotification("Ce produit est en rupture de stock!", "error");
+                return;
+            }
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1
+                });
+            }
+            
+            updateCartCount();
+            showNotification(`${product.name} ajouté au panier !`);
+        }
+
+        // Mettre à jour le compteur du panier
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Animation du compteur
+            cartCount.style.transform = 'scale(1.3)';
+            setTimeout(() => {
+                cartCount.style.transform = 'scale(1)';
+            }, 300);
+        }
+
+        // Gestion de la connexion/utilisateur
+        function showLoginModal() {
+            loginModal.style.display = 'flex';
+            registerModal.style.display = 'none';
+        }
+
+        function showRegisterModal() {
+            registerModal.style.display = 'flex';
+            loginModal.style.display = 'none';
+        }
+
+        function closeModals() {
+            loginModal.style.display = 'none';
+            registerModal.style.display = 'none';
+        }
+
+        function loginUser(email, password) {
+            // Simulation de connexion
+            if (email && password) {
+                currentUser = {
+                    firstName: "Mohamed",
+                    lastName: "Business",
+                    email: email,
+                    phone: "+227 98 06 46 67"
+                };
+                
+                userName.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+                userAvatar.textContent = currentUser.firstName[0] + currentUser.lastName[0];
+                userInfo.style.display = 'flex';
+                loginBtn.style.display = 'none';
+                
+                closeModals();
+                showNotification(`Bienvenue, ${currentUser.firstName} !`);
+            }
+        }
+
+        function registerUser(firstName, lastName, phone, email, password) {
+            // Simulation d'inscription
+            if (firstName && lastName && phone && email && password) {
+                currentUser = {
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone
+                };
+                
+                userName.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+                userAvatar.textContent = currentUser.firstName[0] + currentUser.lastName[0];
+                userInfo.style.display = 'flex';
+                loginBtn.style.display = 'none';
+                
+                closeModals();
+                showNotification(`Compte créé avec succès, bienvenue ${currentUser.firstName} !`);
+            }
+        }
+
+        // Afficher une notification
+        function showNotification(message, type = "success") {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: ${type === "success" ? "var(--success)" : "var(--secondary)"};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                z-index: 1000;
+                box-shadow: var(--shadow);
+                animation: fadeIn 0.5s ease-out;
+                max-width: 300px;
+                font-weight: 500;
+            `;
+            notification.innerHTML = `<i class="fas fa-${type === "success" ? "check-circle" : "exclamation-triangle"}"></i> ${message}`;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'fadeIn 0.5s ease-out reverse';
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 3000);
+        }
+
+        // Événements
+        document.addEventListener('DOMContentLoaded', function() {
+            displayProducts();
+            
+            // Recherche
+            searchButton.addEventListener('click', searchProducts);
+            searchInput.addEventListener('keyup', function(e) {
+                if (e.key === 'Enter') {
+                    searchProducts();
+                }
+            });
+            
+            // Navigation
+            homeLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showHomePage();
+            });
+            
+            // Connexion/Inscription
+            loginBtn.addEventListener('click', showLoginModal);
+            closeLoginModal.addEventListener('click', closeModals);
+            closeRegisterModal.addEventListener('click', closeModals);
+            showRegister.addEventListener('click', function(e) {
+                e.preventDefault();
+                showRegisterModal();
+            });
+            showLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLoginModal();
+            });
+            
+            // Fermer les modals en cliquant à l'extérieur
+            window.addEventListener('click', function(e) {
+                if (e.target === loginModal || e.target === registerModal) {
+                    closeModals();
+                }
+            });
+            
+            // Formulaires
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('loginEmail').value;
+                const password = document.getElementById('loginPassword').value;
+                loginUser(email, password);
+            });
+            
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const firstName = document.getElementById('registerFirstName').value;
+                const lastName = document.getElementById('registerLastName').value;
+                const phone = document.getElementById('registerPhone').value;
+                const email = document.getElementById('registerEmail').value;
+                const password = document.getElementById('registerPassword').value;
+                registerUser(firstName, lastName, phone, email, password);
+            });
+            
+            // Connexion avec Google (simulée)
+            document.querySelectorAll('.btn-google').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Simulation de connexion Google
+                    currentUser = {
+                        firstName: "Google",
+                        lastName: "User",
+                        email: "google.user@example.com",
+                        phone: "+227 98 06 46 67"
+                    };
+                    
+                    userName.textContent = `${currentUser.firstName} ${currentUser.lastName}`;
+                    userAvatar.textContent = currentUser.firstName[0] + currentUser.lastName[0];
+                    userInfo.style.display = 'flex';
+                    loginBtn.style.display = 'none';
+                    
+                    closeModals();
+                    showNotification(`Connecté avec Google, bienvenue ${currentUser.firstName} !`);
+                });
+            });
+        });
+
+        // Animation au défilement
+        const animatedElements = document.querySelectorAll('.animated');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        animatedElements.forEach(element => {
+            element.style.animationPlayState = 'paused';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
